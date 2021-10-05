@@ -10,12 +10,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: johelegp/gcc-snapshot@v1 
+      - uses: rlalik/setup-cpp-compiler@v1
+        with:
+          compiler: latest
+        
       - uses: actions/checkout@v2
 
       # Download and unzip linux repo of the current commit number of the submodule
       - name: Download and unzip linux repo
         run: |
+          
           var=$(git ls-tree main linux | awk '{ print $3 }')
           wget https://github.com/JaydenBBB/linux/archive/$var.zip
           unzip $var.zip
