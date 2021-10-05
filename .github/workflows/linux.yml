@@ -6,9 +6,10 @@ name: CI
 on:
   # Triggers the workflow on push events but only for the main branch
   push:
-    branches: [ main ]
-    paths : [ linux/** ]
-
+    branches: 
+      - main
+    paths : 
+      - linux/**
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
