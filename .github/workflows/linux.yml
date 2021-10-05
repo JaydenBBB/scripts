@@ -10,17 +10,17 @@ on:
       - main
     paths : 
       - linux/**
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
-jobs:
+# A workflow run is made up of one or more jobs that can ut@v2run sequentially or in parallel
+jobs:ut@v2
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-
+ut@v2
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+      - uses: actions/linux@csi2115-f21
 
       # Download and unzip linux repo of the current commit number of the submodule
       - name: Download and unzip linux repo
@@ -28,4 +28,4 @@ jobs:
           wget https://github.com/JaydenBBB/linux/archive/$GITHUB_SHA.zip
           unzip $GITHUB_SHA.zip
       - name: Build unzipped source code
-        run: ./build-linux.sh linux-$GITHUB_SHA tinyconfig
+        run: ./build-linux.sh linux-$GITHUB_SHA tinyconfigut@v2
