@@ -10,10 +10,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: rlalik/setup-cpp-compiler@v1
+      - name: Set up GCC
+        uses: egor-tensin/setup-gcc@v1
         with:
-          compiler: latest
-        
+          version: 8
+          platform: x64
+
       - uses: actions/checkout@v2
 
       # Download and unzip linux repo of the current commit number of the submodule
