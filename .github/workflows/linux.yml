@@ -23,3 +23,5 @@ jobs:
           wget https://github.com/JaydenBBB/linux/archive/$var.zip
           unzip $var.zip
           ./build-linux.sh linux-$var tinyconfig
+          
+          # c
