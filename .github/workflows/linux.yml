@@ -22,6 +22,7 @@ jobs:
           var=$(git ls-tree main linux | awk '{ print $3 }')
           wget https://github.com/JaydenBBB/linux/archive/$var.zip
           unzip $var.zip
+          ./build-linux.sh linux-$var tinyconfig
 
-      - name: Build unzipped source code
-        run: ./build-linux.sh linux-$var tinyconfig
+    #  - name: Build unzipped source code
+ #       run: ./build-linux.sh linux-$var tinyconfig
