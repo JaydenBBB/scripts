@@ -1,0 +1,24 @@
+name: CI
+
+on:
+  push:
+    paths:
+      - 'linux/**'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Get the commit hash of the submodule
+        run: var=$(git ls-tree main linux | awk '{ print $3 }')
+          
+
+      # Download and unzip linux repo of the current commit number of the submodule
+      - name: Download and unzip linux repo
+        run: |
+          wget https://github.com/JaydenBBB/linux/archive/$var.zip
+          unzip $var.zip
+
+      - name: Build unzipped source code
+        run: ./build-linux.sh linux-$var tinyconfig
