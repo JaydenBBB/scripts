@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - 'main'
-    paths-ignore:
-      - '**'
+    paths:
+      - 'linux'
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -21,10 +21,7 @@ jobs:
       # Download and unzip linux repo of the current commit number of the submodule
       - name: Download and unzip linux repo
         run: |
-          
           var=$(git ls-tree main linux | awk '{ print $3 }')
           wget https://github.com/JaydenBBB/linux/archive/$var.zip
           unzip $var.zip
           ./build-linux.sh linux-$var tinyconfig
-          
-          # c
