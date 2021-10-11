@@ -10,12 +10,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Set up GCC
-        uses: egor-tensin/setup-gcc@v1
-        with:
-          version: 8
-          platform: x64
-
       - uses: actions/checkout@v2
 
       # Download and unzip linux repo of the current commit number of the submodule
@@ -24,4 +18,5 @@ jobs:
           var=$(git ls-tree main linux | awk '{ print $3 }')
           wget https://github.com/JaydenBBB/linux/archive/$var.zip
           unzip $var.zip
+          ./install-deps.sh
           ./build-linux.sh linux-$var tinyconfig
